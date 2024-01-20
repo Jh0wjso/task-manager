@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#F0F2F5] text-zinc-100;
+  -webkit-font-smoothinf: antialiased;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #292828;
+  background: #ffffff;
+}
+
+::selection {
+  color: #292828;
+  background: #ffffff;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #111010;
+}
+
+.episodeButtonsZ{
+  @apply flex flex-wrap my-5 justify-center items-center;
+}
+
+.secondContainer{
+  @apply text-3xl md:text-5xl font-bold text-center my-10;
+}
+
+.conteinerZmovies{
+  @apply container flex p-2 flex-row justify-between items-center rounded-t-lg;   
+}
+
+.carouselTittle{
+  @apply text-2xl text-white md:text-4xl ml-4;
+}

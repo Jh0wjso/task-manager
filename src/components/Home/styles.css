@@ -1,0 +1,20 @@
+
+.homeContent{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1755px){
+    .homeContent{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1756px){
+    /*SideBar*/
+    .homeContent{
+        width: 100%;
+    }
+}
