@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#F0F2F5] text-zinc-100;
+  @apply bg-[#F0F2F5] text-gray-600;
   -webkit-font-smoothinf: antialiased;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 ::-moz-selection {
   /* Code for Firefox */
-  color: #292828;
-  background: #ffffff;
+  color: #ffffff;
+  background: #292828;
 }
 
 ::selection {
-  color: #292828;
-  background: #ffffff;
+  color: #ffffff;
+  background: #292828;
 }
 
 /* width */
