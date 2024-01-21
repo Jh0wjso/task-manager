@@ -1,11 +1,18 @@
+import { CiStar } from "react-icons/ci";
+import "./styles.css";
+
 export default function NewNote() {
-    return (
-      <div>
-        <div className="title">
-          <h1>Title</h1> <button>Start</button>
-        </div>
-        <textarea>Content</textarea>
+  return (
+    <div className="newNoteBox">
+      <div className="titleBox">
+        <p className="title">Title</p>
+        <button className="starButton">
+          <CiStar />
+        </button>
       </div>
-    );
-  }
-  
+      <div className="createNote">
+        <p className="text-gray-500">Criar nota...</p>
+      </div>
+    </div>
+  );
+}
