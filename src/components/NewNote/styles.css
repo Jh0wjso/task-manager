@@ -1,0 +1,18 @@
+.newNoteBox{
+    @apply flex flex-col items-center justify-center w-[30%] border-4;
+    @apply bg-gray-100 mt-10;
+}
+
+.titleBox{
+    @apply text-2xl flex flex-row items-center justify-between w-[100%] border-b border-gray-300;
+    @apply h-10 bg-white px-5;
+}
+
+.title{
+    @apply text-gray-700 text-xl;
+}
+
+.createNote{
+    @apply flex flex-col p-5 justify-center w-[100%];
+    @apply h-[100%] bg-white;
+}
