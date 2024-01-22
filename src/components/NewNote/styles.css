@@ -1,10 +1,10 @@
 .newNoteBox{
-    @apply flex flex-col items-center justify-center w-[30%] border-4;
-    @apply bg-gray-100 mt-10;
+    @apply flex flex-col items-center justify-center h-[40vh] w-[30%] border-4 rounded-2xl;
+    @apply bg-white mt-10;
 }
 
 .titleBox{
-    @apply text-2xl flex flex-row items-center justify-between w-[100%] border-b border-gray-300;
+    @apply text-2xl flex flex-row items-center justify-between w-[100%] border-b border-gray-300 rounded-2xl;
     @apply h-10 bg-white px-5;
 }
 
@@ -13,6 +13,6 @@
 }
 
 .createNote{
-    @apply flex flex-col p-5 justify-center w-[100%];
+    @apply flex flex-col p-5 w-[100%] rounded-2xl;
     @apply h-[100%] bg-white;
 }

@@ -1,0 +1,3 @@
+.icons{
+    @apply flex flex-row w-[100%] ml-9 py-3;
+}
