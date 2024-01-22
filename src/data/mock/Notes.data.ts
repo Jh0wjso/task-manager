@@ -5,7 +5,7 @@ type Note ={
     isFavorite: boolean
 }
 
-export const Notes: Note[] = [
+export const notesData: Note[] = [
     {
         id: 1,
         title: 'Note 1',
