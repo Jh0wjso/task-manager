@@ -2,8 +2,13 @@
 .homeContent{
     width: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.notesContainer{
+    @apply mt-20 container flex flex-col justify-center w-[100%] h-[100%];
 }
 
 @media screen and (max-width: 1755px){
