@@ -12,7 +12,8 @@ interface NoteProps {
 }
 
 export default function Note({ title, description, isFavorite }: NoteProps) {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isStartFavorite, setIsStartFavorite] = useState(isFavorite);
 
   function closeModal() {
     setModalIsOpen(false);
@@ -22,12 +23,12 @@ export default function Note({ title, description, isFavorite }: NoteProps) {
     <div className="newNoteBox">
       <div className="titleBox">
         <p className="title">{title}</p>
-        <button className="starButton">
-          {!isFavorite ? <CiStar /> : <MdStar color="orange" />}
+        <button className="starButton" onClick={() => setIsStartFavorite(!isStartFavorite)}>
+          {!isStartFavorite ? <CiStar /> : <MdStar color="orange" />}
         </button>
       </div>
       <div className="createNote">
-        <p className="text-gray-500">{description}</p>
+        <p className="text-gray-500 w-[100%] h-[100%] resize-none outline-none border-none">{description}</p>
       </div>
       <section className="icons">
         <LuPencil className="mr-5" size={20} />
