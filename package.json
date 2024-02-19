@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "axios": "^1.6.7",
     "better-react-carousel": "^1.1.1",
     "date-fns": "^2.28.0",
     "graphql": "^16.5.0",
