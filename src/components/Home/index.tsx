@@ -1,9 +1,21 @@
-import { notesData } from "../../data/mock/Notes.data";
+import { useState, useEffect } from "react";
 import NewNote from "../NewNote";
 import Note from "../Note/Note";
 import "./styles.css";
 
 export default function Home() {
+  const [notesData, setNotesData] = useState([]);
+
+  useEffect(() => {
+    // Fazer a solicitação à sua API aqui
+    fetch("http://localhost:3003/notes")
+      .then((response) => response.json())
+      .then((data) => setNotesData(data))
+      .catch((error) => console.error("Erro ao obter dados da API:", error));
+  }, []); // A lista de dependências vazia garante que a solicitação seja feita apenas uma vez
+
+  console.log(notesData);
+
   return (
     <section className="homeContent">
       <section className="w-screen flex flex-col items-center justify-center">
@@ -13,13 +25,13 @@ export default function Home() {
         Favorites
         <div className="flex">
           {notesData.map(
-            (note) =>
-              note.isFavorite && (
+            (note : NotesType) =>
+              note.isfavorite && (
                 <Note
                   key={note.id}
                   title={note.title}
-                  description={note.description}
-                  isFavorite={note.isFavorite}
+                  content={note.content}
+                  isfavorite={note.isfavorite}
                 ></Note>
               )
           )}
@@ -28,13 +40,13 @@ export default function Home() {
           All Notes
           <div className="flex">
             {notesData.map(
-              (note) =>
-                note.isFavorite !== true && (
+              (note : NotesType) =>
+                !note.isfavorite && (
                   <Note
                     key={note.id}
                     title={note.title}
-                    description={note.description}
-                    isFavorite={note.isFavorite}
+                    content={note.content}
+                    isfavorite={note.isfavorite}
                   ></Note>
                 )
             )}
