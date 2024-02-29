@@ -2,26 +2,59 @@ import { CiStar } from "react-icons/ci";
 import "./styles.css";
 import { MdStar } from "react-icons/md";
 import { useState } from "react";
-import { set } from "date-fns";
 
 export default function NewNote() {
   
   const [isFavorite, setIsFavorite] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   return (
     <div className="newNoteBox">
       <div className="titleBox">
-        <input type="text" placeholder="Title" className="text-gray-500 w-[100%] outline-none border-none" />
-        <button className="starButton" onClick={() => setIsFavorite(!isFavorite)}>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="outline-none border-none w-[100%] h-[100%] resize-none"
+        />
+        <button
+          className="starButton"
+          onClick={() => setIsFavorite(!isFavorite)}
+          
+        >
           {!isFavorite ? <CiStar /> : <MdStar color="orange" />}
         </button>
       </div>
       <div className="createNote">
         <textarea
-          placeholder="Description"
-          className="text-gray-500 w-[100%] h-[100%] resize-none outline-none border-none"
+          placeholder="Content for a new note"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="outline-none border-none w-[100%] h-[100%] resize-none"
         ></textarea>
       </div>
+      <button
+        onClick={() => {
+          console.log(title, content, isFavorite);
+          fetch("http://localhost:3003/notes", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: title,
+              content: content,
+              isfavorite: isFavorite,
+            }),
+          });
+          window.location.reload();
+        }}
+        className="hover:bg-gray-400 hover:text-white w-[100%] h-10 mt-5 rounded-md border-none outline-none"
+      >
+        Create Note
+      </button>
     </div>
   );
 }
