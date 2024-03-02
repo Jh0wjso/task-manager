@@ -14,8 +14,6 @@ export default function Home() {
       .catch((error) => console.error("Erro ao obter dados da API:", error));
   }, []); // A lista de dependências vazia garante que a solicitação seja feita apenas uma vez
 
-  console.log(notesData);
-
   return (
     <section className="homeContent">
       <section className="w-screen flex flex-col items-center justify-center">
@@ -29,6 +27,7 @@ export default function Home() {
               note.isfavorite && (
                 <Note
                   key={note.id}
+                  id={note.id}                  
                   title={note.title}
                   content={note.content}
                   isfavorite={note.isfavorite}
@@ -36,14 +35,15 @@ export default function Home() {
               )
           )}
         </div>
-        <div className="mt-20">
+        <div className="mt-20 container">
           All Notes
-          <div className="flex">
+          <div className="flex flex-wrap justify-center items-center">
             {notesData.map(
               (note : NotesType) =>
                 !note.isfavorite && (
                   <Note
                     key={note.id}
+                    id={note.id}
                     title={note.title}
                     content={note.content}
                     isfavorite={note.isfavorite}

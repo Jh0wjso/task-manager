@@ -1,6 +1,6 @@
 .newNoteBox{
     @apply flex flex-col items-center justify-center h-[40vh] w-[30%] border-4 rounded-2xl;
-    @apply bg-white mt-10;
+    @apply bg-white m-5;
 }
 
 .titleBox{

@@ -1,71 +1,53 @@
 import { useState } from "react";
 import { CiStar } from "react-icons/ci";
 import { MdStar } from "react-icons/md";
-import { LuPaintBucket, LuPencil } from "react-icons/lu";
-import { MdBlock } from "react-icons/md";
-import Modal from "react-modal";
 import "./styles.css";
 
 interface NoteProps {
+  id: number;
   title: string;
   content: string;
   isfavorite?: boolean;
 }
 
-export default function Note({ title, content, isfavorite }: NoteProps) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
+export default function Note({ id, title, content, isfavorite }: NoteProps) {
   const [isStartFavorite, setIsStartFavorite] = useState(isfavorite);
 
-  function closeModal() {
-    setModalIsOpen(false);
-  }
+  const handleStarClick = () => {
+    setIsStartFavorite(!isStartFavorite);
 
-  console.log(title);
-  console.log(isStartFavorite);
+    fetch(`http://localhost:3003/notes/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        content: content,
+        isfavorite: !isStartFavorite?.valueOf(),
+      }),
+    });
+    window.location.reload();
+  };
 
   return (
     <div className="newNoteBox">
       <div className="titleBox">
-        <p className="title">{title}</p>
-        {isEdit ? (
-          <button
-            className="starButton"
-            onClick={() => setIsStartFavorite(!isStartFavorite)}
-          >
-            {!isStartFavorite ? <CiStar /> : <MdStar color="orange" />}
-          </button>
-        ) : (
-          <div className="startButton">
-            {!isStartFavorite ? <CiStar /> : <MdStar color="orange" />}
-          </div>
-        )}
+        <p className="title">
+          {title}
+        </p>
+        <button className="starButton" onClick={handleStarClick}>
+          {!isStartFavorite ? <CiStar /> : <MdStar color="orange" />}
+        </button>
       </div>
       <div className="createNote">
-        <p className="text-gray-500 w-[100%] h-[100%] resize-none outline-none border-none">
-          {content}
-        </p>
+        <textarea
+          placeholder="Content for a new note"
+          value={content}
+          readOnly={true}
+          className="outline-none border-none w-[100%] h-[100%] resize-none"
+        ></textarea>
       </div>
-      <section className="icons">
-        <button onClick={() => setIsEdit(!isEdit)}>
-          {!isEdit ? (
-          <LuPencil className="mr-5" size={20} />
-        ) : (
-          <MdBlock  className="mr-5" size={20} />
-        )}
-        </button>
-        <button onClick={() => setModalIsOpen(true)}>
-          <LuPaintBucket size={20} />
-        </button>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Example Modal"
-          className="w-[200px] h-[50px] bg-red-500"
-        >
-          <button onClick={closeModal}>close</button>
-        </Modal>
-      </section>
     </div>
   );
 }
