@@ -1,9 +1,5 @@
 .bottomBox{
-    @apply flex flex-row w-[80%] ml-9 py-3 justify-between;
-}
-
-.editButton{
-    @apply p-3 hover:bg-gray-300 transition-colors hover:text-white rounded;
+    @apply flex flex-row w-[100%] ml-9 py-3 justify-start;
 }
 
 .deleteButton{
