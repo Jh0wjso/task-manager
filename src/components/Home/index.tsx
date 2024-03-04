@@ -21,7 +21,7 @@ export default function Home() {
       </section>
       <div className="notesContainer">
         Favorites
-        <div className="flex">
+        <div className="flex flex-wrap justify-center items-center">
           {notesData.map(
             (note : NotesType) =>
               note.isfavorite && (
