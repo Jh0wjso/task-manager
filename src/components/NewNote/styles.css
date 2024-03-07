@@ -9,7 +9,7 @@
 }
 
 .title{
-    @apply text-gray-700 text-xl;
+    @apply text-gray-700 text-xl outline-none border-none resize-none;
 }
 
 .createNote{

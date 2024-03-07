@@ -1,5 +1,5 @@
 .bottomBox{
-    @apply flex flex-row w-[100%] ml-9 py-3 justify-start;
+    @apply flex flex-row w-[100%] ml-9 py-3 justify-start items-center;
 }
 
 .deleteButton{
