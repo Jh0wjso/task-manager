@@ -47,6 +47,7 @@ export default function NewNote() {
               title: title,
               content: content,
               isfavorite: isFavorite,
+              userId: 1,
             }),
           });
           window.location.reload();

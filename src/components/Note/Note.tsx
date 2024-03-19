@@ -9,6 +9,7 @@ interface NoteProps {
   title: string;
   content: string;
   isfavorite?: boolean;
+  userId: string;
 }
 
 export default function Note({ id, title, content, isfavorite }: NoteProps) {
@@ -23,9 +24,11 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        id: id,
         title: title,
         content: content,
         isfavorite: !isStartFavorite?.valueOf(),
+        userId: 2,
       }),
     });
     window.location.reload();
@@ -56,6 +59,7 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
               title: e.target.value,
               content: content,
               isfavorite: isStartFavorite,
+              userId: 2,
             }),
           });
         }}/>
@@ -78,6 +82,7 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
                 title: title,
                 content: e.target.value,
                 isfavorite: isStartFavorite,
+                userId: 2,
               }),
             });
           }}
