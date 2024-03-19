@@ -15,6 +15,12 @@ export default function Header() {
             className="searchInput"
             type="text"
             placeholder="Pesquisar Notas.."
+            onChange={(e) => 
+              fetch(`http://localhost:3003/notes/search/${e.target.value}`)
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+                .catch((error) => console.error("Erro ao obter dados da API:", error))
+            }
           ></input>
         </div>
         <button className="searchButton">

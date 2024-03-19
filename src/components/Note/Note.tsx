@@ -9,10 +9,10 @@ interface NoteProps {
   title: string;
   content: string;
   isfavorite?: boolean;
-  userId: string;
+  userId: number;
 }
 
-export default function Note({ id, title, content, isfavorite }: NoteProps) {
+export default function Note({ id, title, content, isfavorite, userId }: NoteProps) {
   const [isStartFavorite, setIsStartFavorite] = useState(isfavorite);
 
   const handleStarClick = () => {
@@ -28,7 +28,7 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
         title: title,
         content: content,
         isfavorite: !isStartFavorite?.valueOf(),
-        userId: 2,
+        userId: userId,
       }),
     });
     window.location.reload();
@@ -59,7 +59,7 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
               title: e.target.value,
               content: content,
               isfavorite: isStartFavorite,
-              userId: 2,
+              userId: userId,
             }),
           });
         }}/>
@@ -82,7 +82,7 @@ export default function Note({ id, title, content, isfavorite }: NoteProps) {
                 title: title,
                 content: e.target.value,
                 isfavorite: isStartFavorite,
-                userId: 2,
+                userId: userId,
               }),
             });
           }}

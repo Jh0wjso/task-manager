@@ -23,14 +23,15 @@ export default function Home() {
         Favorites
         <div className="flex flex-wrap justify-center items-center">
           {notesData.map(
-            (note : NotesType) =>
+            (note: NotesType) =>
               note.isfavorite && (
                 <Note
                   key={note.id}
-                  id={note.id}                  
+                  id={note.id}
                   title={note.title}
                   content={note.content}
                   isfavorite={note.isfavorite}
+                  userId={2}
                 ></Note>
               )
           )}
@@ -39,7 +40,7 @@ export default function Home() {
           All Notes
           <div className="flex flex-wrap justify-center items-center">
             {notesData.map(
-              (note : NotesType) =>
+              (note: NotesType) =>
                 !note.isfavorite && (
                   <Note
                     key={note.id}
@@ -47,6 +48,7 @@ export default function Home() {
                     title={note.title}
                     content={note.content}
                     isfavorite={note.isfavorite}
+                    userId={2}
                   ></Note>
                 )
             )}
