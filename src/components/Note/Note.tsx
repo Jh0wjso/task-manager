@@ -3,14 +3,7 @@ import { CiStar } from "react-icons/ci";
 import { MdStar } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import "./styles.css";
-
-interface NoteProps {
-  id: number;
-  title: string;
-  content: string;
-  isfavorite?: boolean;
-  userId: number;
-}
+import { NoteProps } from "../../data/interfaces/noteProps.props";
 
 export default function Note({ id, title, content, isfavorite, userId }: NoteProps) {
   const [isStartFavorite, setIsStartFavorite] = useState(isfavorite);
