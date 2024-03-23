@@ -32,13 +32,13 @@ export default function LoginPage() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h1 className="pageTittle mt-10 text-center text-2xl font-bold leading-9 tracking-tight">CoreNotes</h1>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight pageTittle">
+          <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">CoreNotes</h1>
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
             Sign in to your account
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
@@ -92,7 +92,7 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-gray-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
