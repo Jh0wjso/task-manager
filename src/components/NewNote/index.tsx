@@ -17,7 +17,7 @@ export default function NewNote() {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="outline-none border-none w-[100%] h-[100%] resize-none"
+          className="outline-none border-none w-[100%] h-[100%] resize-none text-indigo-600"
         />
         <button
           className="starButton"
@@ -37,8 +37,7 @@ export default function NewNote() {
       </div>
       <button
         onClick={() => {
-          console.log(title, content, isFavorite);
-          fetch("http://localhost:3003/notes", {
+          title && fetch("http://localhost:3003/notes", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -52,7 +51,7 @@ export default function NewNote() {
           });
           window.location.reload();
         }}
-        className="hover:bg-gray-400 hover:text-white w-[100%] h-10 mt-5 rounded-md border-none outline-none"
+        className="text-indigo-600 hover:bg-indigo-600 hover:text-white w-[100%] h-10 mt-5 rounded-md border-none outline-none"
       >
         Create Note
       </button>

@@ -7,20 +7,20 @@
 }
 
 .pageTittle{
-    @apply text-2xl text-gray-500;
+    @apply text-2xl text-indigo-600;
 }
 
 .searchBar{
-    @apply flex items-center w-[50%] h-10 px-2 ml-16 text-gray-700 bg-white border-l border-y border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-600 focus:border-indigo-600;
+    @apply flex items-center w-[50%] h-10 px-2 ml-16 text-indigo-600 bg-white border-l border-y border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-600 focus:border-indigo-600;
     @apply shadow-md border-l-2 border-b-2 border-gray-300; 
 }
 
 .searchInput{
-    @apply w-full h-full px-2 py-1 text-sm text-gray-700 bg-transparent border-none outline-none;
+    @apply w-full h-full px-2 py-1 text-sm text-indigo-600 bg-transparent border-none outline-none;
 }
 
 .searchButton{
-    @apply flex items-center w-10 h-10 px-2 text-gray-700 bg-white border-r border-y border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-600 focus:border-indigo-600;
+    @apply flex items-center w-10 h-10 px-2 text-gray-700 bg-white border-r border-y border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-1;
     @apply shadow-md border-b-2 border-gray-300 border-l-0;
     @apply hover:bg-gray-200
 }

@@ -3,5 +3,5 @@
 }
 
 .deleteButton{
-    @apply p-3 hover:bg-gray-300 rounded-full;
+    @apply p-3 hover:bg-indigo-600 hover:text-white rounded-full;
 }

@@ -9,10 +9,10 @@
 }
 
 .title{
-    @apply text-gray-700 text-xl outline-none border-none resize-none;
+    @apply text-indigo-600 text-xl outline-none border-none resize-none;
 }
 
 .createNote{
-    @apply flex flex-col p-5 w-[100%] rounded-2xl;
+    @apply flex flex-col p-5 w-[100%] rounded-2xl text-indigo-600;
     @apply h-[100%] bg-white;
 }
