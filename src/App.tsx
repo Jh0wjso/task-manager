@@ -6,7 +6,6 @@ import LoginPage from "./screens/Login";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Router />
     </BrowserRouter>
   )
