@@ -25,7 +25,7 @@ export default function RegisterPage() {
         localStorage.setItem("token", data.accessToken);
       })
       .catch((error) => console.error("Erro ao fazer login:", error));
-      window.location.href = "/";
+      window.location.href = "/home";
   };
 
   return (
@@ -93,9 +93,6 @@ export default function RegisterPage() {
               required
               placeholder="********"
             />
-            <p className="text-gray-600 text-xs mt-1">
-              Must contain 1 uppercase letter, 1 number, min. 8 characters.
-            </p>
           </div>
           <button
             type="submit"

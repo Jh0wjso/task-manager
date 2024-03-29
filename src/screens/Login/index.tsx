@@ -11,7 +11,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //handleLogin
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     fetch("http://localhost:3003/users", {
@@ -27,6 +26,7 @@ export default function LoginPage() {
         localStorage.setItem("token", data.accessToken);
       })
       .catch((error) => console.error("Erro ao fazer login:", error));
+    window.location.href = "/home";
   };
 
   return (
@@ -95,6 +95,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleLogin}
               >
                 Sign in
               </button>
@@ -116,59 +117,3 @@ export default function LoginPage() {
   );
 }
 
-/*import React, { useState } from "react";
-
-interface User {
-  email: string;
-  password: string;
-  name: string;
-}
-
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  //handleLogin
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    fetch("http://localhost:3003/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("token", data.accessToken);
-      })
-      .catch((error) => console.error("Erro ao fazer login:", error));
-  };
-
-  return (
-    <div className="flex justify-center items-center w-screen h-screen" >
-      <form onSubmit={handleLogin} className="flex justify-center flex-col">
-        <label>
-          email:
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <input type="submit" value="Login" />
-      </form>
-    </div>
-  );
-}
-
-LoginPage;*/
