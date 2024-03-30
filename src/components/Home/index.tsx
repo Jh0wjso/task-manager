@@ -17,10 +17,10 @@ export default function Home() {
   return (
     <section className="homeContent">
       <section className="w-screen flex flex-col items-center justify-center">
-        <NewNote></NewNote>
+        <NewNote />
       </section>
       <div className="notesContainer">
-        Favorites
+        <h1 className="text-4xl text-indigo-600 w-[100%] border-b-2 border-b-indigo-600 rounded px-4">Favorites</h1>
         <div className="flex flex-wrap justify-center items-center">
           {notesData.map(
             (note: NotesType) =>
@@ -37,7 +37,7 @@ export default function Home() {
           )}
         </div>
         <div className="mt-20 container">
-          All Notes
+        <h1 className="text-4xl text-indigo-600 w-[100%] border-b-2 border-b-indigo-600 rounded px-4">All Notes</h1>
           <div className="flex flex-wrap justify-center items-center">
             {notesData.map(
               (note: NotesType) =>
