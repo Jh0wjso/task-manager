@@ -10,23 +10,27 @@ interface User {
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showstatusMessage, setShowstatusMessage] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
+    
     e.preventDefault();
-    fetch("http://localhost:3003/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("token", data.accessToken);
+    fetch(`http://localhost:3003/users/validateUser/${email}/${password}`)
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.href = "/home";
+        } else {
+          setEmail("");
+          setPassword("");
+          document.getElementById("email")?.focus();
+          document.getElementById("email")?.classList.add("ring-2", "ring-red-500");
+          document.getElementById("password")?.classList.add("ring-2", "ring-red-500");
+          setShowstatusMessage(true);
+        }
       })
-      .catch((error) => console.error("Erro ao fazer login:", error));
-    window.location.href = "/home";
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -56,6 +60,7 @@ export default function LoginPage() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -84,11 +89,15 @@ export default function LoginPage() {
                   id="password"
                   name="password"
                   type="password"
+                  onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
+              {showstatusMessage && (
+                <p id="errormessage" className="text-red-600 text-xs mt-2">Usuario ou senha incorreto</p>
+              )}
             </div>
 
             <div>
