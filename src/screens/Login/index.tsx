@@ -12,26 +12,29 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showstatusMessage, setShowstatusMessage] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
-    
-    e.preventDefault();
-    fetch(`http://localhost:3003/users/validateUser/${email}/${password}`)
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.href = "/home";
-        } else {
-          setEmail("");
-          setPassword("");
-          document.getElementById("email")?.focus();
-          document.getElementById("email")?.classList.add("ring-2", "ring-red-500");
-          document.getElementById("password")?.classList.add("ring-2", "ring-red-500");
-          setShowstatusMessage(true);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+  async function handleLogin() {
+    const user: User = {
+      email: email,
+      password: password,
+      name: "",
+    };
+
+    const response = await fetch(
+      `http://localhost:3003/users/validateUser/${user.email}/${user.password}`
+    );
+
+    const data = await response.json();
+
+    if (data.statusCode === 200) {
+      setShowstatusMessage(false);
+      localStorage.setItem("user", JSON.stringify(user));
+      window.location.href = "/home";
+    } else {
+      setShowstatusMessage(true);
+    }
+  }
+
+  
 
   return (
     <>
