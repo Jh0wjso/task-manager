@@ -46,7 +46,7 @@ export default function NewNote() {
               title: title,
               content: content,
               isfavorite: isFavorite,
-              userId: 1,
+              userId: JSON.parse(localStorage.getItem("user") || "").userId,
             }),
           });
           window.location.reload();
