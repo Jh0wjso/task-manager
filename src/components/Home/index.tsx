@@ -5,10 +5,12 @@ import "./styles.css";
 
 export default function Home() {
   const [notesData, setNotesData] = useState([]);
+  const userId = JSON.parse(localStorage.getItem("user") || "").userId;
 
   useEffect(() => {
     // Fazer a solicitação à sua API aqui
-    fetch("http://localhost:3003/notes")
+    //http://localhost:3003/users/userNotes/2
+    fetch(`http://localhost:3003/users/userNotes/${userId}`)
       .then((response) => response.json())
       .then((data) => setNotesData(data))
       .catch((error) => console.error("Erro ao obter dados da API:", error));
