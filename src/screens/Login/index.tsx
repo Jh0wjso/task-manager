@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface User {
+  userId: number;
+  name: string;
   email: string;
   password: string;
-  name: string;
 }
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name] = useState("");
+  const [userId] = useState(0);
   const [showstatusMessage, setShowstatusMessage] = useState(false);
 
   async function handleLogin() {
     const user: User = {
+      userId: userId,
+      name: name,
       email: email,
       password: password,
-      name: "",
     };
 
     const response = await fetch(
@@ -27,6 +31,8 @@ export default function LoginPage() {
 
     if (data.statusCode === 200) {
       setShowstatusMessage(false);
+      user.userId = data.user.userId;
+      user.name = data.user.name;
       localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "/home";
     } else {
