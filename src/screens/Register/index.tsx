@@ -5,27 +5,65 @@ export default function RegisterPage() {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showstatusMessage, setShowstatusMessage] = useState(false);
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
+    isEmail(email) === false || email === null
+      ? setShowstatusMessage(true)
+      : verifyLogin();
+  };
+
+  const createUser = async () => {
     fetch("http://localhost:3003/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            name: user,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.statusCode === 500) {
+              alert("Erro ao cadastrar usuário, este email já está cadastrado");
+            } else {
+              alert("Usuário cadastrado com sucesso");
+              window.location.href = "/";
+            }
+          })
+          .catch((error) => console.error("Erro ao fazer login:", error));
+  }
+
+  const verifyLogin = async () => {
+   //Se o status code for 500, o email já está cadastrado
+    fetch("http://localhost:3003/users/validateUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
-        password: password,
-        name: user,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        localStorage.setItem("token", data.accessToken);
+        if (data.statusCode === 500) {
+          alert("Email já cadastrado");
+        } else {
+          createUser();
+        }
       })
       .catch((error) => console.error("Erro ao fazer login:", error));
-      window.location.href = "/home";
+  }
+
+  const isEmail = (email: string) => {
+    if (!email) return false;
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
   };
 
   return (
@@ -71,10 +109,13 @@ export default function RegisterPage() {
               type="email"
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              //Verifica se o email é válido
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
               required
-              placeholder="hello@alignui.com"
+              placeholder="email@email.com"
             />
           </div>
           <div className="mb-6">
@@ -94,6 +135,11 @@ export default function RegisterPage() {
               placeholder="********"
             />
           </div>
+          {showstatusMessage && (
+            <p id="errormessage" className="text-red-600 text-xs mt-2">
+              Verifique os campos e tente novamente
+            </p>
+          )}
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
