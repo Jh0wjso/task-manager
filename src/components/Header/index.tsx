@@ -3,9 +3,12 @@ import { BsSearch } from "react-icons/bs";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import { NoteProps } from "../../data/interfaces/noteProps.props";
+import UserModal from "../UserModal";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export default function Header() {
   const [searchResults, setSearchResults] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <nav className="containerHeader">
@@ -37,7 +40,15 @@ export default function Header() {
         <button className="searchButton">
           <BsSearch />
         </button>
+        <button
+          className="userButton"
+          onClick={() => setModalIsOpen(!modalIsOpen)}
+        >
+          <FaRegUserCircle size={40} className="ml-6 text-indigo-600 hover:text-indigo-900" />
+        </button>
+        <UserModal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
       </div>
+      
     </nav>
   );
 }
