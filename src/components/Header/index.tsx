@@ -16,17 +16,19 @@ export default function Header() {
         <Link to="/" className="flex flex-row items-center">
           <h1 className="pageTittle">CoreNotes</h1>
         </Link>
-        <div className="searchBar">
+        {/*
+        <div className="hidden">
+          Class searchBar
           <input
             className="searchInput"
             type="text"
             placeholder="Pesquisar Notas.."
             onChange={(e) =>
-              fetch(`http://localhost:3003/notes?q=${e.target.value}`)
+              fetch(`link`)
                 .then((response) => response.json())
                 .then((data) => setSearchResults(data))
                 .catch((error) =>
-                  console.error("Erro ao obter dados da API:", error)
+                  console.error( error)
                 )
             }
             list="searchResults"
@@ -37,18 +39,22 @@ export default function Header() {
             ))}
           </datalist>
         </div>
-        <button className="searchButton">
+        <button className="hidden">
+          Class searchButton
           <BsSearch />
         </button>
+        */}
         <button
           className="userButton"
           onClick={() => setModalIsOpen(!modalIsOpen)}
         >
-          <FaRegUserCircle size={40} className="ml-6 text-indigo-600 hover:text-indigo-900" />
+          <FaRegUserCircle
+            size={40}
+            className="ml-6 text-indigo-600 hover:text-indigo-900"
+          />
         </button>
         <UserModal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
       </div>
-      
     </nav>
   );
 }

@@ -3,11 +3,11 @@
 }
 
 .navbarContent {
-  @apply p-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8;
+  @apply p-4 mx-auto justify-between lg:max-w-7xl md:items-center md:flex md:px-8;
 }
 
 .pageTittle{
-    @apply text-2xl text-indigo-600;
+    @apply text-4xl text-indigo-600;
 }
 
 .searchBar{
