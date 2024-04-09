@@ -16,30 +16,30 @@ export default function RegisterPage() {
 
   const createUser = async () => {
     fetch("http://localhost:3003/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-            name: user,
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.statusCode === 500) {
-              alert("Erro ao cadastrar usuário, este email já está cadastrado");
-            } else {
-              alert("Usuário cadastrado com sucesso");
-              window.location.href = "/";
-            }
-          })
-          .catch((error) => console.error("Erro ao fazer login:", error));
-  }
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        name: user,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.statusCode === 500) {
+          alert("Erro ao cadastrar usuário, este email já está cadastrado");
+        } else {
+          alert("Usuário cadastrado com sucesso");
+          window.location.href = "/";
+        }
+      })
+      .catch((error) => console.error("Erro ao fazer login:", error));
+  };
 
   const verifyLogin = async () => {
-   //Se o status code for 500, o email já está cadastrado
+    //Se o status code for 500, o email já está cadastrado
     fetch("http://localhost:3003/users/validateUser", {
       method: "POST",
       headers: {
@@ -58,7 +58,7 @@ export default function RegisterPage() {
         }
       })
       .catch((error) => console.error("Erro ao fazer login:", error));
-  }
+  };
 
   const isEmail = (email: string) => {
     if (!email) return false;
@@ -134,7 +134,17 @@ export default function RegisterPage() {
               required
               placeholder="********"
             />
+            <div className="text-sm">
+              Ja é tem cadastro?{" "}
+              <a
+                href="/"
+                className="font-semibold text-indigo-600 hover:text-indigo-500"
+              >
+                clique aqui.
+              </a>
+            </div>
           </div>
+
           {showstatusMessage && (
             <p id="errormessage" className="text-red-600 text-xs mt-2">
               Verifique os campos e tente novamente
