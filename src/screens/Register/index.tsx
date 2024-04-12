@@ -67,20 +67,22 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-        <div className="flex justify-center mb-6">
-          <span className="inline-block bg-gray-200 rounded-full p-3">
-            <FaUser />
-          </span>
+    <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
+      <div className="loginBox bg-white py-8 border-[3px] border-black rounded-2xl max-w-sm w-full">
+        <div className="border-b-2 border-black flex justify-start sm:mx-auto sm:w-full sm:max-w-sm mb-5 pb-5 pl-2">
+          <img
+            src={"src/images/home-icon.png"}
+            alt="logo"
+            className="mr-5"
+            width={75}
+          />
+          <div className="flex flex-col items-start justify-center">
+            <h1 className="smt-10 text-start text-5xl ms:text-7xl font-bold leading-9 tracking-tight">
+              CoreNotes
+            </h1>
+          </div>
         </div>
-        <h2 className="text-2xl font-semibold text-center mb-4">
-          Create a new account
-        </h2>
-        <p className="text-gray-600 text-center mb-6">
-          Enter your details to register.
-        </p>
-        <form>
+        <form className="p-8">
           <div className="mb-4">
             <label
               htmlFor="fullName"
@@ -93,7 +95,7 @@ export default function RegisterPage() {
               id="fullName"
               value={user}
               onChange={(e) => setUser(e.target.value)}
-              className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
+              className="form-input border-black w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
               required
               placeholder="James Brown"
             />
@@ -113,7 +115,7 @@ export default function RegisterPage() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
+              className="form-input border-black w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
               required
               placeholder="email@email.com"
             />
@@ -130,7 +132,7 @@ export default function RegisterPage() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
+              className="form-input border-black w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
               required
               placeholder="********"
             />
@@ -150,13 +152,15 @@ export default function RegisterPage() {
               Verifique os campos e tente novamente
             </p>
           )}
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            onClick={handleRegister}
-          >
-            Register
-          </button>
+          <div className="loginButtonMain">
+            <button
+              type="submit"
+              className="flex w-full justify-center text-white text-2xl font-bold"
+              onClick={handleRegister}
+            >
+              Sign in
+            </button>
+          </div>
         </form>
       </div>
     </div>
