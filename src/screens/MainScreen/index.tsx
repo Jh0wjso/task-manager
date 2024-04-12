@@ -3,15 +3,15 @@ import "./styles.css";
 export default function MainScreen() {
   return (
     <div className="w-screen h-screen flex items-center justify-between p-20">
-      <section className="flex flex-col justify-center items-start p-8 w-[70%] h-full mx-5">
+      <section className="flex flex-col justify-center items-start p-8 w-[40%] h-full mx-5">
         <div className="w-[100%] flex items-center justify-center">
           <img src={"src/images/home-icon.png"} alt="logo" width={200} />
         </div>
         <div className="items-center">
-          <h1 className="text-9xl font-bold">CoreNotes</h1>
+          <h1 className="text-8xl font-bold">CoreNotes</h1>
           <h1 className="text-4xl font-bold">level up your note taking</h1>
         </div>
-        <a href="/login" className="m-4 bg-indigo-600 hover:bg-indigo-900 px-10 py-4 rounded border-black border-2">
+        <a href="/login" className="loginButton">
           <div className="font-bold text-lg text-gray-200">Let's Note</div>
         </a>
       </section>

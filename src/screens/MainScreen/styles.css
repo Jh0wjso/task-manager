@@ -3,3 +3,8 @@
     /*Shadow para o canto inferior esquerdo*/
     box-shadow: 5px 5px 0px 0px #000000cc;
 }
+
+.loginButton{
+    @apply m-4 bg-indigo-600 hover:bg-indigo-900 px-10 py-4 rounded border-black border-2;
+    box-shadow: 5px 5px 0px 0px #000000cc;
+}
