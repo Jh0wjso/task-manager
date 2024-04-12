@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
 interface User {
   userId: number;
@@ -13,7 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [name] = useState("");
   const [userId] = useState(0);
-  const [showstatusMessage, setShowstatusMessage] = useState(false);
+  const [showStatusMessage, setShowStatusMessage] = useState(false);
 
   async function handleLogin() {
     const user: User = {
@@ -30,32 +31,34 @@ export default function LoginPage() {
     const data = await response.json();
 
     if (data.statusCode === 200) {
-      setShowstatusMessage(false);
+      setShowStatusMessage(false);
       user.userId = data.user.userId;
       user.name = data.user.name;
       localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "/home";
     } else {
-      setShowstatusMessage(true);
+      setShowStatusMessage(true);
     }
   }
 
-  
-
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-            CoreNotes
-          </h1>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">
-            Sign in to your account
-          </h2>
-        </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-          <form className="space-y-6" action="#" method="POST">
+      <div className="flex h-screen flex-1 flex-col items-center justify-center px-6 py-12 lg:px-8">
+        <div className="loginBox bg-white py-8 border-[3px] border-black rounded-2xl max-w-sm w-full">
+          <div className="border-b-2 border-black flex justify-start sm:mx-auto sm:w-full sm:max-w-sm mb-5 pb-5 pl-2">
+            <img
+              src={"src/images/home-icon.png"}
+              alt="logo"
+              className="mr-5"
+              width={75}
+            />
+            <div className="flex flex-col items-start justify-center">
+              <h1 className="smt-10 text-start text-5xl ms:text-7xl font-bold leading-9 tracking-tight">
+                CoreNotes
+              </h1>
+            </div>
+          </div>
+          <form className="space-y-6 p-8" action="#" method="POST">
             <div>
               <label
                 htmlFor="email"
@@ -71,7 +74,8 @@ export default function LoginPage() {
                   autoComplete="email"
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="email@email.com"
+                  className="form-input border-black w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -101,18 +105,21 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="********"
+                  className="form-input border-black w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
                 />
               </div>
-              {showstatusMessage && (
-                <p id="errormessage" className="text-red-600 text-xs mt-2">Usuario ou senha incorreto</p>
+              {showStatusMessage && (
+                <p id="errormessage" className="text-red-600 text-xs mt-2">
+                  Usuario ou senha incorreto
+                </p>
               )}
             </div>
 
-            <div>
+            <div className="loginButtonMain">
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center text-white text-2xl font-bold"
                 onClick={handleLogin}
               >
                 Sign in
@@ -134,4 +141,3 @@ export default function LoginPage() {
     </>
   );
 }
-
