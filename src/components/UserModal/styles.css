@@ -1,8 +1,6 @@
 .modalContainer{
     position: fixed;
     top: 3.3rem;
-    left: 64%;
-    width: 100%;
     height: 100%;
     z-index: 1000;
 }
@@ -12,8 +10,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 90%;
-    max-width: 500px;
     padding: 1rem;
     background-color: white;
     border-radius: 10px;
@@ -26,21 +22,21 @@
     right: 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
-    @apply text-indigo-600;
+    @apply text-black font-bold;
 }
 
 .LogoutButton{
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: rgb(79 70 229 / var(--tw-text-opacity));
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    @apply bg-black font-bold;
 }
 
 .LogoutButton:hover{
-    background-color: rgb(49 46 129 / var(--tw-text-opacity));
+    @apply bg-gray-600;
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -49,7 +45,7 @@
 }
 
 .closeButton:hover{
-    color: rgb(49 46 129 / var(--tw-text-opacity));
+    @apply text-gray-600;
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;

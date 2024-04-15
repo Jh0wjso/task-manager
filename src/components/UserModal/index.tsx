@@ -1,6 +1,5 @@
 import { IoMdCloseCircle } from "react-icons/io";
 import "./styles.css";
-import { Link } from "react-router-dom";
 
 interface UserModalProps {
   isOpen: boolean;
