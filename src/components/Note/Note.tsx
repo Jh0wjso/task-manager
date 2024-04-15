@@ -39,7 +39,7 @@ export default function Note({ id, title, content, isfavorite, userId }: NotePro
   
 
   return (
-    <div className={`newNoteBox`}>
+    <div className="newNoteBox loginBox">
       <div className="titleBox bg-transparent">
         <input className="title" defaultValue={title}
         onChange={(e) => {
@@ -62,7 +62,7 @@ export default function Note({ id, title, content, isfavorite, userId }: NotePro
       </div>
       <div className="createNote bg-transparent">
         <textarea
-          placeholder="Content for a new note"
+          placeholder="Content for the note"
           defaultValue={content}
           className="outline-none border-none w-[100%] h-[100%] resize-none bg-transparent"
           onChange={(e) => {
