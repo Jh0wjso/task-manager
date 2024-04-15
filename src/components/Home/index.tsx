@@ -8,13 +8,11 @@ export default function Home() {
   const userId = JSON.parse(localStorage.getItem("user") || "").userId;
 
   useEffect(() => {
-    // Fazer a solicitação à sua API aqui
-    //http://localhost:3003/users/userNotes/2
     fetch(`http://localhost:3003/users/userNotes/${userId}`)
       .then((response) => response.json())
       .then((data) => setNotesData(data))
       .catch((error) => console.error("Erro ao obter dados da API:", error));
-  }, []); // A lista de dependências vazia garante que a solicitação seja feita apenas uma vez
+  }, []);
 
   return (
     <section className="homeContent">
@@ -22,7 +20,7 @@ export default function Home() {
         <NewNote />
       </section>
       <div className="notesContainer">
-        <h1 className="text-4xl text-indigo-600 w-[100%] border-b-2 border-b-indigo-600 rounded px-4">Favorites</h1>
+        <h1 className="text-7xl font-bold text-black w-[100%] border-b-4 border-b-black rounded px-4">Favorites</h1>
         <div className="flex flex-wrap justify-center items-center">
           {notesData.map(
             (note: NotesType) =>
@@ -38,8 +36,8 @@ export default function Home() {
               )
           )}
         </div>
-        <div className="mt-20 container">
-        <h1 className="text-4xl text-indigo-600 w-[100%] border-b-2 border-b-indigo-600 rounded px-4">All Notes</h1>
+        <div className="mt-20">
+        <h1 className="text-7xl font-bold text-black w-[100%] border-b-4 border-b-black rounded px-4">All Notes</h1>
           <div className="flex flex-wrap justify-center items-center">
             {notesData.map(
               (note: NotesType) =>
