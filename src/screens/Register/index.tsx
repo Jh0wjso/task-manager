@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaUser } from "react-icons/fa";
 
 export default function RegisterPage() {
   const [user, setUser] = useState("");
@@ -9,7 +8,7 @@ export default function RegisterPage() {
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    isEmail(email) === false || email === null
+    isEmail(email) === false || email === null || password === "" || user === ""
       ? setShowstatusMessage(true)
       : verifyLogin();
   };
@@ -28,18 +27,16 @@ export default function RegisterPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.statusCode === 500) {
-          alert("Erro ao cadastrar usuário, este email já está cadastrado");
+        if (data.statusCode === 500 || data.statusCode === 404) {
+          alert("Emil já cadastrado");
         } else {
-          alert("Usuário cadastrado com sucesso");
-          window.location.href = "/";
+          window.location.href = "/login";
         }
       })
-      .catch((error) => console.error("Erro ao fazer login:", error));
+      .catch((error) => console.error(error));
   };
 
   const verifyLogin = async () => {
-    //Se o status code for 500, o email já está cadastrado
     fetch("http://localhost:3003/users/validateUser", {
       method: "POST",
       headers: {
@@ -57,7 +54,7 @@ export default function RegisterPage() {
           createUser();
         }
       })
-      .catch((error) => console.error("Erro ao fazer login:", error));
+      .catch((error) => console.error(error));
   };
 
   const isEmail = (email: string) => {
@@ -111,7 +108,6 @@ export default function RegisterPage() {
               type="email"
               id="email"
               value={email}
-              //Verifica se o email é válido
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -136,15 +132,6 @@ export default function RegisterPage() {
               required
               placeholder="********"
             />
-            <div className="text-sm">
-              Ja é tem cadastro?{" "}
-              <a
-                href="/"
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                clique aqui.
-              </a>
-            </div>
           </div>
 
           {showstatusMessage && (
@@ -160,6 +147,15 @@ export default function RegisterPage() {
             >
               Sign in
             </button>
+          </div>
+          <div className="text-center">
+            Ja é tem cadastro?{" "}
+            <a
+              href="/login"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
+              clique aqui.
+            </a>
           </div>
         </form>
       </div>
