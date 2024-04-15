@@ -10,14 +10,14 @@ export default function NewNote() {
   const [content, setContent] = useState("");
 
   return (
-    <div className="newNoteBox">
+    <div className="newNoteBox loginBox">
       <div className="titleBox">
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="outline-none border-none w-[100%] h-[100%] resize-none text-indigo-600"
+          className="outline-none border-none w-[100%] h-[100%] resize-none"
         />
         <button
           className="starButton"
@@ -51,7 +51,7 @@ export default function NewNote() {
           });
           window.location.reload();
         }}
-        className="text-indigo-600 hover:bg-indigo-600 hover:text-white w-[100%] h-10 mt-5 rounded-md border-none outline-none"
+        className="createNoteButton"
       >
         Create Note
       </button>
