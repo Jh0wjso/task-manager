@@ -1,5 +1,5 @@
 .noteStyle{
-    @apply w-[35%] border-[3px] border-black rounded-xl mx-2;
+    @apply md:w-[35%] border-[3px] border-black rounded-xl my-8 md:mx-2;
     /*Shadow para o canto inferior esquerdo*/
     box-shadow: 5px 5px 0px 0px #000000cc;
 }
