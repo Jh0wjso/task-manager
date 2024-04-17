@@ -31,7 +31,7 @@ export default function Home() {
                   title={note.title}
                   content={note.content}
                   isfavorite={note.isfavorite}
-                  userId={2}
+                  userId={JSON.parse(localStorage.getItem("user") || "").userId}
                 ></Note>
               )
           )}
@@ -48,7 +48,7 @@ export default function Home() {
                     title={note.title}
                     content={note.content}
                     isfavorite={note.isfavorite}
-                    userId={2}
+                    userId={JSON.parse(localStorage.getItem("user") || "").userId}
                   ></Note>
                 )
             )}
